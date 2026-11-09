@@ -1,5 +1,6 @@
 import { env } from '@app/env'
 import cors from '@fastify/cors'
+import { toNodeHandler } from 'better-auth/node'
 import fastify from 'fastify'
 import {
   serializerCompiler,
@@ -7,6 +8,8 @@ import {
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 import { errorHandler } from '@/core/errors'
+import { auth } from '@/lib/auth'
+import { authRoutes } from '@/modules/auth/auth-routes'
 
 export const app = fastify({
   logger: {
@@ -49,7 +52,14 @@ app.setErrorHandler(errorHandler)
 
 app.register(cors, {
   origin: true,
+  credentials: true,
 })
+
+app.all('/api/auth/*', async (request, reply) => {
+  return toNodeHandler(auth)(request.raw, reply.raw)
+})
+
+app.register(authRoutes, { prefix: '/auth' })
 
 app.get('/health', () => {
   return { status: 'ok' }
