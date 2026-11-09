@@ -1,0 +1,33 @@
+{
+  "name": "@app/web",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check src",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@app/ui": "workspace:*",
+    "@hookform/resolvers": "^5.9.1",
+    "better-auth": "^1.7.18",
+    "lucide-react": "^1.16.0",
+    "next": "16.4.5",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-hook-form": "^7.86.0",
+    "sonner": "^2.0.8",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
