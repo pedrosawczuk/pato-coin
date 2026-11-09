@@ -5,9 +5,15 @@
   "packageManager": "pnpm@10.5.2",
   "scripts": {
     "dev": "turbo dev",
-    "build": "turbo build"
+    "build": "turbo build",
+    "docker:up": "docker compose -f docker-compose.dev.yml up -d",
+    "docker:down": "docker compose -f docker-compose.dev.yml down",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.6.6"
+    "@app/typescript-config": "workspace:*",
+    "@biomejs/biome": "^2.6.6",
+    "husky": "^9.1.7",
+    "turbo": "^2.11.10"
   }
 }

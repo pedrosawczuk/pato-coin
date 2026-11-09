@@ -5,7 +5,9 @@
   "files": [
     "base.json"
   ],
+  "main": "./base.json",
   "exports": {
+    ".": "./base.json",
     "./base.json": "./base.json"
   }
 }
